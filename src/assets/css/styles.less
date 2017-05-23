@@ -1,7 +1,22 @@
 @color: pink;
-body {margin: 0;display: flex;
-  background: red;z-index:1337; position:relative;
+body {
+	background: linear-gradient(78deg, #69b7eb, #b3dbd3, #f4d6db);
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-family: arial;
+	font-size: 62.5%;
 }
-@media (min-width:640px) {
-p {color: @color; box-shadow: 0 0 0 darken(@color, 30%)}
-  }
+.block{
+	&__text{
+    	color : #fff;
+    	font-size: 4rem;
+    	&--line{
+    		text-align:center;
+    		padding:1rem;
+    		opacity: 0.5;
+    	}
+	}
+}
