@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(78deg, #69b7eb, #b3dbd3, #f4d6db);
+  background: linear-gradient(37deg, #69b7eb, #b3dbd3, #f4d6db);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -7,18 +7,76 @@ body {
   align-items: center;
   font-family: arial;
   font-size: 62.5%;
+  margin: 0;
+  padding: 0;
 }
-.block__text {
+.picture {
+  z-index: 0;
+  background-image: url(../img/0017.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.2;
+}
+.contain {
+  z-index: 2;
+  display: flex;
+  width: 100%;
+}
+.contain__arrow {
+  flex: 5%;
   color: #fff;
   font-size: 4rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
-.block__text--line {
+.contain__arrow__button {
+  border: solid #fff 0.1rem;
+  border-radius: 5rem;
+  width: 4rem;
+  height: 4rem;
+  transition: opacity 0.35s;
+  opacity: 0.4;
+  line-height: 3.9rem;
+  text-align: center;
+}
+.contain__arrow__button:hover {
+  opacity: 1;
+  transition: opacity 0.35s;
+  cursor: pointer;
+}
+.contain__text {
+  flex: 40%;
+  color: #fff;
+  font-size: 4rem;
+  transition: transform 0.35s;
+  transform: translate3d(0, 0, 0);
+  text-shadow: 4px #ccc;
+}
+.contain__text--line {
   text-align: center;
   padding: 1rem;
-  opacity: 0.5;
-  transition: opacity 1s ease-out;
 }
-.block__text:hover {
-  opacity: 0.3;
-  transition: opacity 1s ease-out;
+.contain__text--line:first-child {
+  font-weight: bold;
+}
+.contain__text--line:last-child {
+  transition: opacity 0.35s;
+  opacity: 0;
+}
+.contain__text:hover {
+  transition: transform 0.35s;
+  transform: translate3d(0, -10%, 0);
+}
+.contain__text:hover .contain__text--line:first-child {
+  transition: border 0.35s;
+  border-bottom: solid #fff 0.1rem;
+}
+.contain__text:hover .contain__text--line:last-child {
+  transition: opacity 0.35s;
+  opacity: 1;
 }
