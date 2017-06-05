@@ -55,7 +55,7 @@ body {
   font-size: 4rem;
   transition: transform 0.35s;
   transform: translate3d(0, 0, 0);
-  text-shadow: 4px #ccc;
+  text-shadow: .4rem #ccc;
 }
 .contain__text--line {
   text-align: center;
@@ -65,18 +65,6 @@ body {
   font-weight: bold;
 }
 .contain__text--line:last-child {
-  transition: opacity 0.35s;
-  opacity: 0;
-}
-.contain__text:hover {
-  transition: transform 0.35s;
-  transform: translate3d(0, -10%, 0);
-}
-.contain__text:hover .contain__text--line:first-child {
-  transition: border 0.35s;
-  border-bottom: solid #fff 0.1rem;
-}
-.contain__text:hover .contain__text--line:last-child {
-  transition: opacity 0.35s;
-  opacity: 1;
+  font-size: 1.3rem;
+  border-top: 0.1rem solid #fff;
 }
