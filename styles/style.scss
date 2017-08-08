@@ -147,16 +147,39 @@ ul{
 	&__header{
 		border-bottom: solid grey 1px;
 		align-self: flex-start;
-		text-align: center;
-		font-size: 3rem;
-		font-family: $serif-font;
-		padding: 2rem;
+		text-align: center;	
+		padding: 1rem 0;
 		margin-bottom:.5rem;
 		position: relative;
+		& h1{
+			font-size: 2rem;
+			font-family: $serif-font;
+			margin: 0;
+			padding: 0;
+		}
+		& h2{
+			font-size: 1.1rem;
+			font-style: italic;
+			margin: 0;
+			padding: 0;
+		}
 	}
 	&__menu--icon{
 		position: absolute;
 		left: 1rem;
+		top: 1rem;
+		cursor:pointer;
+	}
+	&__menu--icon-insta{
+		text-decoration: none;
+		color: inherit;
+		position: absolute;
+		right: 1rem;
+		top: 1rem;
+		cursor:pointer;
+		&-bottom{
+			top:2.5rem;
+		}
 	}
 	&__nav{
 		background: darkgrey;
