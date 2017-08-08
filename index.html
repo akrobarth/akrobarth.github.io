@@ -1,24 +1,42 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+
 	<head>
-		<link rel="stylesheet" type="text/css" href="dist/assets/css/styles.css" media="screen">
+
+		<base href="/">
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Akrobarth</title>
+		<meta name="description" content="test SHG">
+
+		<meta name="HandheldFriendly" content="True">
+		<meta name="MobileOptimized" content="320">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+		<link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="styles/style.css" />
+
+
 	</head>
-	<body>
-		<div class="contain">
-			<div class="contain__arrow">
-				<p class="contain__arrow__button" id="prev"><</p>
-			</div>
-			<div class="contain__text">
-				<div class="contain__text--line contain__text--line--first">Barthélémy Giraud</div>
-				<div class="contain__text--line">Développeur front</div>
-			</div>
-			<div class="contain__arrow">
-				<p class="contain__arrow__button" id="next">></p>
-			</div>
-		</div>
-		<div class="picture" id="picture">
-		</div>
-		<script type="text/javascript" src="dist/assets/js/images.json"></script>
-		<script type="text/javascript" src="dist/assets/js/script.js"></script>
+
+	<body class="main-wrapper" ng-app="app">
+		<!-- Main view for templates -->
+		<div ng-view class="main-view"></div>
+
 	</body>
+	<!-- Angular external libraries for application -->
+	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+	<script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
+	<script type="text/javascript" src="bower_components/angular-animate/angular-animate.js"></script>
+	<!-- Angular components -->
+	<script type="text/javascript" src="app/app.js"></script>
+	<!-- App Controler -->
+	<script type="text/javascript" src="app/controller.js"></script>
+	<!-- home Controler -->
+	<script type="text/javascript" src="home/homeController.js"></script>
+	<!-- QC Controler -->
+	<script type="text/javascript" src="qc/qcController.js"></script>
+	<!-- home data -->
+	<script type="text/javascript" src="js/data.js"></script>
+
 </html>

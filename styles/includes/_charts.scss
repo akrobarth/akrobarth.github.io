@@ -1,0 +1,71 @@
+// CHARTS CLASSES
+@function my-calc($var){
+	@return ((($var - 50 ) * 3.6) - 180deg)
+	//@return ((($var - 50 ) * 3.6) - 180deg)
+}
+@function my-percent($var){
+	@return ($var *1%)
+}
+[class *= "piechart-"]{
+	border: solid $color-green 20px;
+	position:absolute;
+	width: 144px; 
+	height: 288px;
+	box-sizing: border-box;
+	z-index: 50;
+	top:0;
+	transition:all ease 2s;
+	transition-delay: 0.2s;
+	&.ng-hide{
+		background:#cde5c8;
+		border-color: #cde5c8;
+		//transform: rotate(-4520deg); 
+	}
+}
+[class *= "piechart-a-"]{
+	border-top-right-radius: 0;
+	border-top-left-radius: 144px;
+	border-bottom-left-radius: 144px;
+	border-bottom-right-radius: 0;
+	left:0;
+}
+[class *= "piechart-b-"]{
+	right:144px;
+	border-top-right-radius: 0;
+	border-top-left-radius: 144px;
+	border-bottom-left-radius: 144px;
+	border-bottom-right-radius: 0;
+	transform-origin: 100% 50%;
+}
+.piechart__scratch{
+	position:absolute;
+	background:url('../image/bg-dataGain.png');;
+	right: -21px;
+    width: 25px;
+    height: 20px;
+    bottom: 249px;
+}	
+@for $i from 1 through 100 {
+    @if ($i < 50) {
+    	.piechart-a-#{$i} {
+    		border-color:#cde5c8;
+			transform-origin: 100% 50%;
+    	}
+    	.piechart-b-#{$i} {
+    		transform: rotate(my-calc($i));		
+    	}
+    }
+    @else {
+    	.piechart-a-#{$i} {
+			transform:rotate(180deg);
+			left: 50%;
+    	}
+    	.piechart-b-#{$i} {
+    		transform: rotate(my-calc($i));
+    	}
+
+    }
+    .barchart-#{$i} {
+    	width: my-percent($i);
+    }
+}
