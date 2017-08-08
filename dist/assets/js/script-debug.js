@@ -1,14 +1,11 @@
 'use strict';
 var imagesArray = Object.keys(images);
-var ImageLength = imagesArray.length;
+var ImageLength = imagesArray.length -1;
+
 function setRandomPicture(){
-	
-	var min = 0;
-	var max = ImageLength - 1;
-	var randomIndex =  Math.floor(Math.random() * (max - min +1)) + min;
+	var randomIndex = Math.floor(Math.random() * (ImageLength));
 	var randomImgUrl =  imagesArray[randomIndex];
-	document.getElementById('picture').style.backgroundImage = 'url(dist/assets/img/' + randomImgUrl + ')';
-	document.getElementById('picture').setAttribute('dataImgIndex', randomIndex);
+	setPicture(randomIndex,randomImgUrl);
 }
 
 function skipPicture(side){
@@ -19,18 +16,21 @@ function skipPicture(side){
 		}else{
 			var newIndex = ImageLength;
 		}
-		console.log(1,side, newIndex);
 	}else {
-			if (imgIndex < ImageLength){
+		if (imgIndex < ImageLength){
 			var newIndex = imgIndex + 1;
 		}else{
 			var newIndex = 0;
 		}
-		console.log(2, side, newIndex);
 	}
 	var newImgUrl =  imagesArray[newIndex];
-	document.getElementById('picture').setAttribute('dataImgIndex', newIndex);
-	document.getElementById('picture').style.backgroundImage = 'url(dist/assets/img/' + newImgUrl + ')';
+	setPicture(newIndex,newImgUrl);
+}
+
+function setPicture(imgIndex,imgName){
+	console.log(imgIndex,imgName);
+	document.getElementById('picture').setAttribute('dataImgIndex', imgIndex);
+	document.getElementById('picture').style.backgroundImage = 'url(dist/assets/img/' + imgName + ')';
 }
 
 setRandomPicture();

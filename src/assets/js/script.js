@@ -1,9 +1,10 @@
 'use strict';
 var imagesArray = Object.keys(images);
-var ImageLength = imagesArray.length;
+var ImageLength = imagesArray.length -1;
 
 function setRandomPicture(){
-	var randomImgUrl =  imagesArray[Math.floor(Math.random() * (ImageLength))];
+	var randomIndex = Math.floor(Math.random() * (ImageLength));
+	var randomImgUrl =  imagesArray[randomIndex];
 	setPicture(randomIndex,randomImgUrl);
 }
 
@@ -15,20 +16,19 @@ function skipPicture(side){
 		}else{
 			var newIndex = ImageLength;
 		}
-		console.log(1,side, newIndex);
 	}else {
 		if (imgIndex < ImageLength){
 			var newIndex = imgIndex + 1;
 		}else{
 			var newIndex = 0;
 		}
-		console.log(2, side, newIndex);
 	}
 	var newImgUrl =  imagesArray[newIndex];
 	setPicture(newIndex,newImgUrl);
 }
 
 function setPicture(imgIndex,imgName){
+	console.log(imgIndex,imgName);
 	document.getElementById('picture').setAttribute('dataImgIndex', imgIndex);
 	document.getElementById('picture').style.backgroundImage = 'url(dist/assets/img/' + imgName + ')';
 }
