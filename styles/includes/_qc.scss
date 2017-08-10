@@ -1,0 +1,130 @@
+//QUEBEC
+.qc{
+	&__header{
+		border-bottom: solid grey 1px;
+		align-self: flex-start;
+		text-align: center;	
+		padding: 1rem 0;
+		position: relative;
+		color: $color-dark-grey;
+		& h1{
+			font-size: 2rem;
+			font-family: $serif-font;
+			margin: 0;
+			padding: 0;
+		}
+		& h2{
+			font-size: 1.1rem;
+			font-style: italic;
+			margin: 0;
+			padding: 0;
+		}
+	}
+	&__menu--icon{
+		position: absolute;
+		left: 1rem;
+		top: 1rem;
+		cursor:pointer;
+		font-size: 2rem;
+	}
+	&__menu--icon-insta{
+		position: absolute;
+		right: 1rem;
+		top: 1rem;
+		cursor:pointer;
+		font-size: 2rem;
+	}
+	&__main{
+		color: $color-dark-grey;
+	}
+	&__menu{
+		margin-top: 3rem;
+		& li {
+			font-size: 1rem;
+			padding: .5rem 0;
+			border-bottom: solid 1px grey
+		}
+	}
+	&__nav{
+		background: $color-light;
+		border-right: $color-light-grey solid .1rem;
+		position:fixed;
+		padding: 1rem;
+		top: 0;
+		left:0;
+		right:50%;
+		bottom:0;
+		transition:all ease 0.5s;
+		&.ng-hide {
+			left:-50%;
+			right:100%;
+		}
+	}
+	&__insta{
+		background: $color-light;
+		border-left: $color-light-grey solid .1rem;
+		position:fixed;
+		padding: 1rem 3rem;
+		right: 0;
+		left:50%;
+		top:0;
+		bottom:0;
+		transition:all ease 0.5s;
+		display: flex;
+  		justify-content: center;
+  		flex-direction: column;
+  		align-items: center;
+		&.ng-hide {
+			right:-50%;
+			left:100%;
+
+		}
+	}
+	
+}
+.insta{
+	&__link{
+		font-size: 3rem;
+		flex: 100%;
+		cursor:pointer;
+		display: flex;
+	  	justify-content: center;
+	  	align-items: center;
+	  	color: inherit;
+	  	text-decoration: none;
+	  	& i {
+	  		margin-left: .5rem;
+	  	}
+	}
+}
+
+.bigPic{
+	width: 100%;
+	height: 500px;
+	background-size: cover !important;
+	background-repeat: no-repeat !important;
+	background-position: center !important;
+	position: relative;
+	@media screen and (max-width: 640px) {
+		height: 200px;
+	}
+}
+.content__title{
+	font-family: $serif-font;
+	color: $color-light;
+	font-size: 3rem;
+	text-shadow: 0 0 .5rem #000000, 0 0 3px $color-dark-grey; 
+	text-align: center;
+	position: absolute;
+	bottom:1rem;
+	width: 100%;
+}
+.content__date{
+	color: $color-light;
+	font-size: 1.2rem;
+	text-shadow: 0 0 .5rem #000000, 0 0 3px $color-dark-grey; 
+	text-align: center;
+	position: absolute;
+	bottom:0;
+	width: 100%;
+}

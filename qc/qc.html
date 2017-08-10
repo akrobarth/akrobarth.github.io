@@ -2,17 +2,40 @@
 	<h1>Québec 2017</h1>
 	<h2>Road Trip</h2>
 	<i class="icon-th-menu qc__menu--icon" ng-click="toggleMenu()"></i>
-	<a href="http://www.instagram.com/anlo00oo" target="_blank" class="qc__menu--icon-insta"><i class="icon-instagram"</i></a>
-	<a href="http://www.instagram.com/akrobarth"  target="_blank" class="qc__menu--icon-insta qc__menu--icon-insta-bottom"><i class="icon-instagram"></i></a>
+	<i class="icon-instagram qc__menu--icon-insta" ng-click="toggleInsta()"></i>
+
 </header>
 <div class="qc__main">
-	<div class="qc__content">
-		plop
+	<!--MAIN-->
+	<div class="qc__content" ng-if="!opened">
+		Anlo & Barth partent en voyage !
 	</div>
+
+	<!--DETAIL-->
+	<div class="qc__content" ng-if="opened">
+		<div class="bigPic" style="background: url('{{opened.bigPic}}');">
+			<div class="content__title">{{opened.title}}</div>
+			<div class="content__date">{{opened.dates.start}} - {{opened.dates.end}}</div>
+		</div>
+	</div>
+
+	<!--MENU LEFT-->
+	<nav class="qc__nav" ng-show="showMenu">
+		<i class="icon-close qc__menu--icon" ng-click="toggleMenu()"></i>
+		<ul class="qc__menu">
+			<li ng-repeat="step in steps" ng-click="open(step)">{{step.title}}</li>
+		</ul>
+	</nav>
+
+	<!--MENU RIGHT-->
+	<nav class="qc__insta" ng-show="showInsta">
+		<i class="icon-close qc__menu--icon" ng-click="toggleInsta()"></i>
+		<a class="insta__link"  href="http://instagram.com/anlo00oo" target="_blank">
+			Anlo <i class="icon-instagram"></i>
+		</a>
+		<a class="insta__link"  href="http://instagram.com/akrobarth" target="_blank">
+			Barth <i class="icon-instagram"></i>
+		</a>
+	</nav>
 </div>
-<nav class="qc__nav" ng-show="showMenu">
-	<i class="icon-close qc__menu--icon" ng-click="toggleMenu()"></i>
-	<ul>
-		<li>Etape 1</li>
-	</ul>
-</nav>
+

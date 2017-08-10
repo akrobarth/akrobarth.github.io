@@ -20,8 +20,8 @@
           templateUrl : "qc/qc.html",
           controller: 'QcController',
           resolve: {
-            resolvedData: function(appService){
-              return appService.get();
+            resolvedData: function(qcService){
+              return qcService.get();
             }
           }
 
@@ -35,6 +35,14 @@
           });
         }
       };
-
+    })
+    .service('qcService', function($http){
+      return {
+        get: function(){
+          return $http.get('js/qc.js').then(function(response) {
+            return response.data;
+          });
+        }
+      };
     })
 })();
