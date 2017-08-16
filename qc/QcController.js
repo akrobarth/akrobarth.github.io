@@ -2,9 +2,10 @@
 
   angular
     .module('app')
-    .controller('QcController', function ($scope, resolvedData){
+    .controller('QcController', function ($scope, resolvedData, $sce){
 
     	$scope.steps = resolvedData;
+        $scope.$sce = $sce;
 
     	$scope.showMenu = false;
     	$scope.showInsta = false;
@@ -32,8 +33,5 @@
 	        return $scope.opened === item;
 	    };
 
-        // $scope.$on($routeUpdate), function(scope, next, current) {
-        //     console.log(scope.next.current);
-        // }
     });
 })();
