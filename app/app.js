@@ -17,6 +17,7 @@
           }
       })
       .when("/qc",{
+          reloadOnSearch: false,
           templateUrl : "qc/qc.html",
           controller: 'QcController',
           resolve: {

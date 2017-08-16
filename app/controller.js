@@ -9,7 +9,7 @@
 
   angular
     .module('app')
-    .controller('MainController', function ($scope, resolvedData){
+    .controller('MainController', function ($scope, resolvedData, $location){
 
     });
 })();

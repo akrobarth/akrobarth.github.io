@@ -17,6 +17,12 @@
 			<div class="content__title">{{opened.title}}</div>
 			<div class="content__date">{{opened.dates.start}} - {{opened.dates.end}}</div>
 		</div>
+		
+		<div class="content__galerie">
+			<div class="content__galerie__thumb" ng-repeat="pic in opened.pics">
+				<img src="{{pic}}" />
+			</div>
+		</div>
 	</div>
 
 	<!--MENU LEFT-->

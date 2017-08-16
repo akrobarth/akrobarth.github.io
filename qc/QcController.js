@@ -23,11 +23,17 @@
 	            $scope.opened = undefined;
 	        } else {
 	            $scope.opened = item;
-	        }        
+	        }
+            var thisId = $scope.opened.id;
+            $location.search('step', thisId)        
 		};
 
 		$scope.isOpen = function(item){
 	        return $scope.opened === item;
 	    };
+
+        // $scope.$on($routeUpdate), function(scope, next, current) {
+        //     console.log(scope.next.current);
+        // }
     });
 })();
