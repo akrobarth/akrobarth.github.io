@@ -18,6 +18,10 @@
 			<div class="content__date">{{opened.dates.start}} - {{opened.dates.end}}</div>
 		</div>
 
+		<div>
+		<div id="map" class="content__map" ng-init="initMap()"></div>
+		</div>
+
 		<div ng-bind-html="$sce.trustAsHtml(opened.text)"> </div>
 
 		<div class="content__galerie">

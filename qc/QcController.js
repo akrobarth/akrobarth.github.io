@@ -2,7 +2,7 @@
 
   angular
     .module('app')
-    .controller('QcController', function ($scope, resolvedData, $sce){
+    .controller('QcController', function ($scope, resolvedData, $sce, $location){
 
     	$scope.steps = resolvedData;
         $scope.$sce = $sce;
@@ -32,6 +32,13 @@
 		$scope.isOpen = function(item){
 	        return $scope.opened === item;
 	    };
+
+        $scope.initMap = function() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 3,
+                center: new google.maps.LatLng(26.483, -16.084)
+            });
+        }
 
     });
 })();
