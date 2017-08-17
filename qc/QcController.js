@@ -34,10 +34,23 @@
 	    };
 
         $scope.initMap = function() {
+
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 3,
-                center: new google.maps.LatLng(26.483, -16.084)
+                zoom: 5
             });
+
+            var bounds = new google.maps.LatLngBounds();
+
+            for (var key in $scope.opened.gps){
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng($scope.opened.gps[key].lat, $scope.opened.gps[key].long),
+                    map: map
+                });
+
+                bounds.extend(marker.position);
+            }
+            
+            map.fitBounds(bounds);
         }
 
     });
