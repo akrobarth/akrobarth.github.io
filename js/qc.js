@@ -1,18 +1,14 @@
 {
 	"step1": {
-		"id": "steps1",
+		"id": 1,
 		"dates" :{
 			"start": "27/08/17",
 			"end": "29/08/17"
 		},
 		"gps" :{
 			"start": {
-				"lat": "46.548121",
-				"long": "-72.779420"
-			},
-			"end":  {
-				"lat": "46.553680",
-				"long": "-73.053684"
+				"lat": "45.53065",
+				"long": "-73.60768"
 			}
 		},
 		"title": "Montreal",
@@ -34,22 +30,222 @@
 		]
 	},
 	"step2": {
-		"id": "steps1",
+		"id": 2,
 		"dates" :{
-			"start": "27/08/17",
-			"end": "29/08/17"
+			"start": "29/08/17",
+			"end": "31/08/17"
 		},
 		"gps" :{
 			"start": {
-				"lat": "46.548121",
-				"long": "-72.779420"
+				"lat": "45.53065",
+				"long": "-73.60768"
 			},
 			"end":  {
-				"lat": "46.553680",
-				"long": "-73.053684"
+				"lat": "46.69328",
+				"long": "-72.74207"
 			}
 		},
-		"title": "Montreal - La Tuque",
+		"title": "Montreal - Saint-Jean-des-Piles",
+		"text": "<p>lorem ipsum sic amet</p>",
+		"bigPic": "montrealBig.jpg",
+		"pics": [
+			"01.jpg",
+			"02.jpg",
+			"03.jpg"
+		]
+	},
+	"step3": {
+		"id": 3,
+		"dates" :{
+			"start": "31/08/17",
+			"end": "01/09/17"
+		},
+		"gps" :{
+			"start": {
+				"lat": "46.69328",
+				"long": "-72.74207"
+			},
+			"end":  {
+				"lat": "47.43624",
+				"long": "-72.7819"
+			}
+		},
+		"title": "Saint-Jean-des-Piles - La Tuque",
+		"text": "<p>lorem ipsum sic amet</p>",
+		"bigPic": "montrealBig.jpg",
+		"pics": [
+			"01.jpg",
+			"02.jpg",
+			"03.jpg"
+		]
+	},
+	"step4": {
+		"id": 4,
+		"dates" :{
+			"start": "01/08/17",
+			"end": "02/09/17"
+		},
+		"gps" :{
+			"start": {
+				"lat": "47.43624",
+				"long": "-72.7819"
+			},
+			"end":  {
+				"lat": "48.54854",
+				"long": "-71.65166"
+			}
+		},
+		"title": "La Tuque - Alma",
+		"text": "<p>lorem ipsum sic amet</p>",
+		"bigPic": "montrealBig.jpg",
+		"pics": [
+			"01.jpg",
+			"02.jpg",
+			"03.jpg"
+		]
+	},
+	"step5": {
+		"id": 5,
+		"dates" :{
+			"start": "02/09/17",
+			"end": "05/09/17"
+		},
+		"gps" :{
+			"start": {
+				"lat": "48.54854",
+				"long": "-71.65166"
+			},
+			"end":  {
+				"lat": "48.23537",
+				"long": "-70.20055"
+			}
+		},
+		"title": "Alma - l'Anse Saint Jean",
+		"text": "<p>lorem ipsum sic amet</p>",
+		"bigPic": "montrealBig.jpg",
+		"pics": [
+			"01.jpg",
+			"02.jpg",
+			"03.jpg"
+		]
+	},
+	"step6": {
+		"id": 6,
+		"dates" :{
+			"start": "05/09/17",
+			"end": "07/09/17"
+		},
+		"gps" :{
+			"start": {
+				"lat": "48.23537",
+				"long": "-70.20055"
+			},
+			"end":  {
+				"lat": "48.24604",
+				"long": "-69.54398"
+			}
+		},
+		"title": "l'Anse Saint Jean -  Grandes Bergeronnes",
+		"text": "<p>lorem ipsum sic amet</p>",
+		"bigPic": "montrealBig.jpg",
+		"pics": [
+			"01.jpg",
+			"02.jpg",
+			"03.jpg"
+		]
+	},
+	"step7": {
+		"id": 7,
+		"dates" :{
+			"start": "07/09/17",
+			"end": "08/09/17"
+		},
+		"gps" :{
+			"start": {
+				"lat": "48.24604",
+				"long": "-69.54398"
+			},
+			"end":  {
+				"lat": "47.55845",
+				"long": "-69.87593"
+			}
+		},
+		"title": "Grandes Bergeronnes -  Kamouraska",
+		"text": "<p>lorem ipsum sic amet</p>",
+		"bigPic": "montrealBig.jpg",
+		"pics": [
+			"01.jpg",
+			"02.jpg",
+			"03.jpg"
+		]
+	},
+	"step8": {
+		"id": 8,
+		"dates" :{
+			"start": "08/09/17",
+			"end": "10/09/17"
+		},
+		"gps" :{
+			"start": {
+				"lat": "47.55845",
+				"long": "-69.87593"
+			},
+			"end":  {
+				"lat": "46.81143",
+				"long": "-71.20805"
+			}
+		},
+		"title": "Kamouraska -  Quebec",
+		"text": "<p>lorem ipsum sic amet</p>",
+		"bigPic": "montrealBig.jpg",
+		"pics": [
+			"01.jpg",
+			"02.jpg",
+			"03.jpg"
+		]
+	},
+	"step9": {
+		"id": 9,
+		"dates" :{
+			"start": "10/09/17",
+			"end": "12/09/17"
+		},
+		"gps" :{
+			"start": {
+				"lat": "46.81143",
+				"long": "-71.20805"
+			},
+			"end":  {
+				"lat": "45.26927",
+				"long": "-72.15411"
+			}
+		},
+		"title": "Quebec -  Magog",
+		"text": "<p>lorem ipsum sic amet</p>",
+		"bigPic": "montrealBig.jpg",
+		"pics": [
+			"01.jpg",
+			"02.jpg",
+			"03.jpg"
+		]
+	},
+	"step10": {
+		"id": 10,
+		"dates" :{
+			"start": "12/09/17",
+			"end": "15/09/17"
+		},
+		"gps" :{
+			"start": {
+				"lat": "45.26927",
+				"long": "-72.15411"
+			},
+			"end":  {
+				"lat": "45.53065",
+				"long": "-73.60768"
+			}
+		},
+		"title": "Magog -  Montreal",
 		"text": "<p>lorem ipsum sic amet</p>",
 		"bigPic": "montrealBig.jpg",
 		"pics": [

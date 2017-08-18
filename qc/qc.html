@@ -19,7 +19,7 @@
 		</div>
 
 		<div>
-		<div id="map" class="content__map" ng-init="initMap()"></div>
+		<div id="map" class="content__map"></div>
 		</div>
 
 		<div ng-bind-html="$sce.trustAsHtml(opened.text)"> </div>
@@ -38,7 +38,7 @@
 	<nav class="qc__nav" ng-show="showMenu">
 		<i class="icon-close qc__menu--icon" ng-click="toggleMenu()"></i>
 		<ul class="qc__menu">
-			<li ng-repeat="step in steps" ng-click="open(step)">{{step.title}}</li>
+			<li ng-repeat="step in steps | object2Array | orderBy:'id'" ng-click="open(step)">{{step.title}}</li>
 		</ul>
 	</nav>
 
