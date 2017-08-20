@@ -23,7 +23,10 @@
           resolve: {
             resolvedData: function(qcService){
               return qcService.get();
-            }
+            },
+            resolvedPicsData: function(qcPicsService){
+              return qcPicsService.get();
+            },
           }
 
       })
@@ -41,6 +44,15 @@
       return {
         get: function(){
           return $http.get('js/qc.js').then(function(response) {
+            return response.data;
+          });
+        }
+      };
+    })
+    .service('qcPicsService', function($http){
+      return {
+        get: function(){
+          return $http.get('js/data-pics.json').then(function(response) {
             return response.data;
           });
         }

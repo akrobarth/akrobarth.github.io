@@ -229,11 +229,17 @@ gulp.task('build:size', function() {
     }));
 });
 
+gulp.task('listpics', function(){
+  return gulp.src(['qc/images/**/*.*'])
+  .pipe(require('gulp-filelist')('data-pics.json'))
+  .pipe(gulp.dest('js'))
+
+})
 
 // default task to be run with `gulp` command
 // this default task will run BrowserSync & then use Gulp to watch files.
 // when a file is changed, an event is emitted to BrowserSync with the filepath.
-gulp.task('default', ['browser-sync', 'sass', 'minify-css'], function() {
+gulp.task('default', ['browser-sync', 'sass', 'minify-css', 'listpics'], function() {
   gulp.watch('styles/*.css', function(file) {
     if (file.type === "changed") {
       reload(file.path);
@@ -242,6 +248,7 @@ gulp.task('default', ['browser-sync', 'sass', 'minify-css'], function() {
   gulp.watch(['*.html', 'components/**/*.html', 'home/*.html', 'qc/*.html'], ['bs-reload']);
   gulp.watch(['app/*.js', 'components/**/*.js', 'js/*.js', 'qc/*.js'], ['bs-reload']);
   gulp.watch('styles/**/**/*.scss', ['sass', 'minify-css']);
+  gulp.watch('*.jpg', ['listpics'])
 });
 
 
@@ -268,3 +275,5 @@ gulp.task('build', function(callback) {
     'build:size',
     callback);
 });
+
+

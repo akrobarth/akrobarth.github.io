@@ -1,10 +1,11 @@
-<header class="qc__header"> 
-	<h1>Québec 2017</h1>
-	<h2>Road Trip</h2>
-	<i class="icon-th-menu qc__menu--icon" ng-click="toggleMenu()"></i>
-	<i class="icon-instagram qc__menu--icon-insta" ng-click="toggleInsta()"></i>
-
-</header>
+<div class="qc__header--fix">
+	<header class="qc__header"> 
+		<h1>Québec 2017</h1>
+		<h2>Road Trip</h2>
+		<i class="icon-th-menu qc__menu--icon" ng-click="toggleMenu()"></i>
+		<i class="icon-instagram qc__menu--icon-insta" ng-click="toggleInsta()"></i>
+	</header>
+</div>
 <div class="qc__main">
 	<!--MAIN-->
 	<div class="qc__content" ng-if="!opened">
@@ -19,14 +20,19 @@
 		</div>
 
 		<div>
-		<div id="map" class="content__map"></div>
+			<div class="content--title"><i class="icon-automobile"></i> Itinéraire</div>
+			<div id="map" class="content__map"></div>
 		</div>
-
-		<div ng-bind-html="$sce.trustAsHtml(opened.text)"> </div>
-
-		<div class="content__galerie">
-			<div class="content__galerie__thumb" ng-repeat="pic in opened.pics">
-				<img src="{{pic}}" />
+		<div>
+			<div class="content--title"><i class="icon-directions_walk"></i> Que faire</div>
+			<div ng-bind-html="$sce.trustAsHtml(opened.text)" class=content__text> </div>
+		</div>
+		<div>
+			<div class="content--title"><i class="icon-camera"></i> Gallerie</div>
+			<div class="content__galerie">
+				<div class="content__galerie__thumb" ng-repeat="pic in openedPics">
+					<img src="{{pic}}" />
+				</div>
 			</div>
 		</div>
 
