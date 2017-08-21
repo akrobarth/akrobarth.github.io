@@ -87,13 +87,31 @@
         }
 
         function calcRoute(opened, map) {
+
+            var lineSymbol = {
+                path: google.maps.SymbolPath.CIRCLE,
+                fillOpacity: .5,
+                scale: 2
+            };
+
+            var polylineDotted = new google.maps.Polyline({
+                strokeColor: '#000000',
+                strokeOpacity: 0,
+                fillOpacity: 0,
+                icons: [{
+                    icon: lineSymbol,
+                    offset: '0',
+                    repeat: '8px'
+                }],
+            });
             
             var directionsService = new google.maps.DirectionsService();
-            var directionsDisplay = new google.maps.DirectionsRenderer();
+            var directionsDisplay = new google.maps.DirectionsRenderer({ polylineOptions: polylineDotted, suppressMarkers: true, clickable: false });
             var stepDisplay = new google.maps.InfoWindow;
 
             var start = new google.maps.LatLng(opened.gps.start.lat, opened.gps.start.long);
             var end = new google.maps.LatLng(opened.gps.end.lat, opened.gps.end.long);
+
             var request = {
                 origin: start,
                 destination: end,
