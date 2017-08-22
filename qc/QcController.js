@@ -117,21 +117,38 @@
                 destination: end,
                 travelMode: 'DRIVING',
             };
+
+            var startmarker = new google.maps.Marker({
+                position: start,
+                map: map,
+                raiseOnDrag: true,
+                    icon: {
+                    path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
+                    scale: 5},
+                animation: google.maps.Animation.DROP
+            });
+            var endmarker = new google.maps.Marker({
+                position: end,
+                map: map,
+                raiseOnDrag: true,
+                    icon: {
+                    path: 'M 150 500 C 154 345 149 329 150 150 C 267 320 323 130 433 134 C 461 165 437 244 452 327 C 329 280 305 447 182 348 C 174 377 180 412 177 501 L 151 502' ,
+                    fillColor: 'red',
+                    fillOpacity: 0.8,
+                    scale: .1,
+                    strokeColor: 'black',
+                    strokeWeight: 1,
+                 anchor: new google.maps.Point(185, 500)},
+                animation: google.maps.Animation.DROP
+            });
+
             directionsService.route(request, function(result, status) {
                 if (status == 'OK') {
                   directionsDisplay.setDirections(result);
-                        var leg = response.routes[ 0 ].legs[ 0 ];
-                        makeMarker( leg.start_location, icons.start, "title" );
-                        makeMarker( leg.end_location, icons.end, 'title' );
-                  showSteps(response, markerArray, stepDisplay, map);
                 }
             });
             directionsDisplay.setMap(map);
         };
-
-        function makemarker(){
-            
-        }
 
         function showSteps(directionResult, markerArray, stepDisplay, map) {
             var myRoute = directionResult.routes[0].legs[0];
