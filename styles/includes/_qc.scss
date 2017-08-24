@@ -13,6 +13,7 @@
 			font-family: $serif-font;
 			margin: 0;
 			padding: 0;
+			cursor: pointer;
 		}
 		& h2{
 			font-size: 1.1rem;
@@ -65,7 +66,7 @@
 		right:50%;
 		bottom:0;
 		transition:all ease 0.5s;
-		 z-index: 2;
+		z-index: 2;
 		&.ng-hide {
 			left:-50%;
 			right:100%;
@@ -85,6 +86,7 @@
   		justify-content: center;
   		flex-direction: column;
   		align-items: center;
+  		z-index: 2;
 		&.ng-hide {
 			right:-50%;
 			left:100%;
@@ -145,7 +147,7 @@
 		margin: 1rem;
 		column-count: 3;
 		@media screen and (max-width: 640px) {
-			column-count: 2;
+			column-count: 1;
 		}
 		&__thumb{
 			padding: .5rem 0;
@@ -160,11 +162,32 @@
         box-sizing: border-box;
 	}
 	&__text{
-		margin: 1rem;
+		margin: 1rem 2rem;
+		text-align: justify;
+		column-count: 2;
+		column-gap: 1.5rem;
+		@media screen and (max-width: 640px) {
+			column-count: 1;
+			margin: 1rem 3rem;
+		}
+		& h3 {
+			font-weight: bold;
+		}
 	}
 	&--title{
     	margin: 2rem 1rem 1rem;
     	font-size: 1rem;
     	font-family: $sans-serif-font;
     }	
+}
+.welcome{
+	margin-top: 110px;
+	font-size: 1.5rem;
+	text-align: center;
+	line-height: 2.3rem;
+	&-img{
+		max-width: 75%;
+	    margin: 0 auto;
+	    display: block;
+	}
 }

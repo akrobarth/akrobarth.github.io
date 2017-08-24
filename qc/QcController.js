@@ -20,7 +20,10 @@
                 }; 
             }
         });
-
+        $scope.goHome = function(){
+            $location.search('step', null);
+            $scope.opened = '';
+        }
     	$scope.toggleMenu = function(){
     		$scope.showMenu = !$scope.showMenu;
     	}
@@ -76,8 +79,13 @@
                     map: map,
                     raiseOnDrag: true,
                     icon: {
-                        path: google.maps.SymbolPath.BACKWARD_OPEN_ARROW,
-                        scale: 5},
+                        path: 'M 150 500 C 154 345 149 329 150 150 C 267 320 323 130 433 134 C 461 165 437 244 452 327 C 329 280 305 447 182 348 C 174 377 180 412 177 501 L 151 502' ,
+                        fillColor: 'darkGrey',
+                        fillOpacity: 0.8,
+                        scale: .1,
+                        strokeColor: 'black',
+                        strokeWeight: 1,
+                        anchor: new google.maps.Point(185, 500)},
                     animation: google.maps.Animation.DROP
 
                 });
@@ -123,7 +131,7 @@
                 map: map,
                 raiseOnDrag: true,
                     icon: {
-                    path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
+                    path: google.maps.SymbolPath.CIRCLE,
                     scale: 5},
                 animation: google.maps.Animation.DROP
             });
@@ -133,12 +141,12 @@
                 raiseOnDrag: true,
                     icon: {
                     path: 'M 150 500 C 154 345 149 329 150 150 C 267 320 323 130 433 134 C 461 165 437 244 452 327 C 329 280 305 447 182 348 C 174 377 180 412 177 501 L 151 502' ,
-                    fillColor: 'red',
+                    fillColor: 'darkGrey',
                     fillOpacity: 0.8,
                     scale: .1,
                     strokeColor: 'black',
                     strokeWeight: 1,
-                 anchor: new google.maps.Point(185, 500)},
+                    anchor: new google.maps.Point(185, 500)},
                 animation: google.maps.Animation.DROP
             });
 

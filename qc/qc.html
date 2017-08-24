@@ -1,6 +1,6 @@
 <div class="qc__header--fix">
 	<header class="qc__header"> 
-		<h1>Québec 2017</h1>
+		<h1 ng-click="goHome()" >Québec 2017</h1>
 		<h2>Road Trip</h2>
 		<i class="icon-th-menu qc__menu--icon" ng-click="toggleMenu()"></i>
 		<i class="icon-instagram qc__menu--icon-insta" ng-click="toggleInsta()"></i>
@@ -9,7 +9,13 @@
 <div class="qc__main">
 	<!--MAIN-->
 	<div class="qc__content" ng-if="!opened">
-		Anlo & Barth partent en voyage !
+		<p class="welcome">
+		Anlo & Barth partent en voyage !<br />
+		Eté 2017 notre route nous mène au Quebec.<br />
+		Grands espaces, nature sauvage, copains et sirop d'érable...<br />
+		A nous la poutine !!
+		</p>
+		<img  class="welcome-img" src="/qc/images/ab.jpg" />
 	</div>
 
 	<!--DETAIL-->
@@ -23,7 +29,7 @@
 			<div class="content--title"><i class="icon-automobile"></i> Itinéraire</div>
 			<div id="map" class="content__map"></div>
 		</div>
-		<div>
+		<div ng-if="opened.text">
 			<div class="content--title"><i class="icon-directions_walk"></i> Que faire</div>
 			<div ng-bind-html="$sce.trustAsHtml(opened.text)" class=content__text> </div>
 		</div>
