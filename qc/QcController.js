@@ -3,7 +3,7 @@
   angular
     .module('app')
     .controller('QcController', function ($scope, resolvedData,resolvedPicsData, $sce, $location){
-
+        console.log('in');
     	$scope.steps = resolvedData;
         $scope.pics = resolvedPicsData;
         $scope.$sce = $sce;
