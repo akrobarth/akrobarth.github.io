@@ -3,7 +3,6 @@
   angular
     .module('app')
     .controller('QcController', function ($scope, resolvedData,resolvedPicsData, $sce, $location){
-        console.log('in');
     	$scope.steps = resolvedData;
         $scope.pics = resolvedPicsData;
         $scope.$sce = $sce;
@@ -43,6 +42,9 @@
             $location.search('step', thisId);
             setTimeout(function() {$scope.initMap($scope.opened)}, 10);
             $scope.getPics($scope.opened);
+
+            document.body.scrollTop = 0; // For Chrome, Safari and Opera 
+            document.documentElement.scrollTop = 0;
 		};
 
         $scope.getPics = function(opened){
@@ -89,6 +91,16 @@
                     animation: google.maps.Animation.DROP
 
                 });
+
+                var infowindow = new google.maps.InfoWindow({
+                  content: opened.hotelName,
+                  alignBottom: true
+                });
+
+                marker.addListener('click', function() {
+                  infowindow.open(map, marker);
+                });
+
                 marker.setMap( map ); 
 
             }     
@@ -114,7 +126,10 @@
             });
             
             var directionsService = new google.maps.DirectionsService();
-            var directionsDisplay = new google.maps.DirectionsRenderer({ polylineOptions: polylineDotted, suppressMarkers: true, clickable: false });
+            var directionsDisplay = new google.maps.DirectionsRenderer({ 
+                    polylineOptions: polylineDotted, 
+                    suppressMarkers: true, 
+                    clickable: false });
             var stepDisplay = new google.maps.InfoWindow;
 
             var start = new google.maps.LatLng(opened.gps.start.lat, opened.gps.start.long);
@@ -128,6 +143,7 @@
 
             var startmarker = new google.maps.Marker({
                 position: start,
+                clickable: false,
                 map: map,
                 raiseOnDrag: true,
                     icon: {
@@ -135,6 +151,7 @@
                     scale: 5},
                 animation: google.maps.Animation.DROP
             });
+
             var endmarker = new google.maps.Marker({
                 position: end,
                 map: map,
@@ -148,6 +165,15 @@
                     strokeWeight: 1,
                     anchor: new google.maps.Point(185, 500)},
                 animation: google.maps.Animation.DROP
+            });
+
+            var infowindow = new google.maps.InfoWindow({
+              content: opened.hotelName,
+              alignBottom: true
+            });
+
+            endmarker.addListener('click', function() {
+              infowindow.open(map, endmarker);
             });
 
             directionsService.route(request, function(result, status) {

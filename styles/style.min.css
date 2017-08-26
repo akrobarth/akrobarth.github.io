@@ -30,14 +30,15 @@
 .qc__menu--icon,.qc__menu--icon-insta{position:absolute;top:1rem;font-size:2rem;cursor:pointer}
 .qc__menu--icon{left:1rem}
 .qc__menu--icon-insta{right:1rem}
-.qc__insta,.qc__nav{background:#fff;position:fixed;top:0;bottom:0;transition:all ease .5s;z-index:2}
+.qc__insta,.qc__nav{background:#fff;top:0;transition:all ease .5s;z-index:2;position:fixed;bottom:0}
 .qc__menu{margin-top:3rem}
 .qc__menu li{font-size:1rem;padding:.5rem 0;border-bottom:solid 1px grey;cursor:pointer}
 .qc__nav{border-right:#bcbec6 solid .1rem;padding:1rem;left:0;right:50%}
 .qc__nav.ng-hide{left:-50%;right:100%}
 .qc__insta{border-left:#bcbec6 solid .1rem;padding:1rem 3rem;right:0;left:50%;display:flex;justify-content:center;flex-direction:column;align-items:center}
 .qc__insta.ng-hide{right:-50%;left:100%}
-.insta__link{font-size:3rem;flex:100%;cursor:pointer;display:flex;justify-content:center;align-items:center;color:inherit;text-decoration:none}
+.qc__footer{position:fixed;right:0;left:0;bottom:0;text-align:right;padding:.5rem}
+.insta__link{font-size:1.5rem;flex:100%;cursor:pointer;display:flex;justify-content:center;align-items:center;color:inherit;text-decoration:none}
 .insta__link i{margin-left:.5rem}
 .bigPic{margin-top:100px;width:100%;height:300px;background-size:cover!important;background-repeat:no-repeat!important;background-position:center!important;position:relative}
 .content__date,.content__title{color:#fff;text-shadow:0 0 .5rem #000,0 0 3px #535663;text-align:center;position:absolute;width:100%}
@@ -56,6 +57,8 @@
 }
 .content--title{margin:2rem 1rem 1rem;font-size:1rem}
 .welcome{margin-top:110px;font-size:1.5rem;text-align:center;line-height:2.3rem}
+@media screen and (max-width:640px){.welcome{font-size:1.2rem}
+}
 .welcome-img{max-width:75%;margin:0 auto;display:block}
 body,ul{margin:0;padding:0}
 body{min-height:100vh;font-size:62.5%}
