@@ -3,5 +3,3 @@ sftp-config.json
 _build
 npm-debug.log
 .idea
-style.css
-style.min.css
