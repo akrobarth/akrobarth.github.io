@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Respiration Carrée</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .phase {
+            font-size: 32px;
+            font-weight: bold;
+            color: #667eea;
+            margin: 20px 0;
+            min-height: 40px;
+        }
+
+        .timer {
+            font-size: 72px;
+            font-weight: bold;
+            color: #764ba2;
+            margin: 30px 0;
+        }
+
+        .cycle-info {
+            font-size: 18px;
+            color: #666;
+            margin: 20px 0;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-start {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-start:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        .btn-pause {
+            background: #f6ad55;
+            color: white;
+        }
+
+        .btn-pause:hover {
+            background: #ed8936;
+            transform: translateY(-2px);
+        }
+
+        .btn-reset {
+            background: #fc8181;
+            color: white;
+        }
+
+        .btn-reset:hover {
+            background: #f56565;
+            transform: translateY(-2px);
+        }
+
+        .settings {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #e2e8f0;
+        }
+
+        .setting-group {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .setting-group label {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .setting-group input {
+            width: 80px;
+            padding: 8px;
+            border: 2px solid #cbd5e0;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .visual-square {
+            width: 200px;
+            height: 200px;
+            border: 4px solid #667eea;
+            margin: 30px auto;
+            position: relative;
+            border-radius: 10px;
+        }
+
+        .breath-indicator {
+            width: 20px;
+            height: 20px;
+            background: #764ba2;
+            border-radius: 50%;
+            position: absolute;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(118, 75, 162, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🫁 Respiration Carrée</h1>
+        
+        <div class="visual-square">
+            <div class="breath-indicator" id="indicator"></div>
+        </div>
+
+        <div class="phase" id="phase">Prêt à commencer</div>
+        <div class="timer" id="timer">0</div>
+        <div class="cycle-info" id="cycleInfo">Cycle: 0 / 5</div>
+
+        <div class="controls">
+            <button class="btn-start" id="startBtn" onclick="start()">Démarrer</button>
+            <button class="btn-pause" id="pauseBtn" onclick="pause()" style="display: none;">Pause</button>
+            <button class="btn-reset" onclick="reset()">Réinitialiser</button>
+        </div>
+
+        <div class="settings">
+            <h3>Paramètres</h3>
+            <div class="setting-group">
+                <label>Durée par phase (sec):</label>
+                <input type="number" id="phaseDuration" value="4" min="2" max="10">
+            </div>
+            <div class="setting-group">
+                <label>Nombre de cycles:</label>
+                <input type="number" id="cycleCount" value="5" min="1" max="20">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let interval = null;
+        let currentTime = 0;
+        let currentCycle = 0;
+        let currentPhase = 0;
+        let isRunning = false;
+        let isPaused = false;
+
+        const phases = [
+            { name: "Inspirez", color: "#667eea", position: { top: "-10px", left: "90px" } },
+            { name: "Retenez", color: "#48bb78", position: { top: "90px", left: "180px" } },
+            { name: "Expirez", color: "#f6ad55", position: { top: "190px", left: "90px" } },
+            { name: "Retenez", color: "#fc8181", position: { top: "90px", left: "-10px" } }
+        ];
+
+        function getPhaseDuration() {
+            return parseInt(document.getElementById('phaseDuration').value);
+        }
+
+        function getTotalCycles() {
+            return parseInt(document.getElementById('cycleCount').value);
+        }
+
+        function updateDisplay() {
+            const phase = phases[currentPhase];
+            document.getElementById('phase').textContent = phase.name;
+            document.getElementById('phase').style.color = phase.color;
+            document.getElementById('timer').textContent = currentTime;
+            document.getElementById('cycleInfo').textContent = `Cycle: ${currentCycle} / ${getTotalCycles()}`;
+
+            const indicator = document.getElementById('indicator');
+            indicator.style.top = phase.position.top;
+            indicator.style.left = phase.position.left;
+            indicator.style.background = phase.color;
+        }
+
+        function start() {
+            if (isRunning && !isPaused) return;
+
+            if (!isRunning) {
+                currentCycle = 1;
+                currentPhase = 0;
+                currentTime = getPhaseDuration();
+            }
+
+            isRunning = true;
+            isPaused = false;
+            
+            document.getElementById('startBtn').style.display = 'none';
+            document.getElementById('pauseBtn').style.display = 'inline-block';
+            document.getElementById('phaseDuration').disabled = true;
+            document.getElementById('cycleCount').disabled = true;
+
+            updateDisplay();
+
+            interval = setInterval(() => {
+                currentTime--;
+
+                if (currentTime <= 0) {
+                    currentPhase++;
+
+                    if (currentPhase >= phases.length) {
+                        currentPhase = 0;
+                        currentCycle++;
+
+                        if (currentCycle > getTotalCycles()) {
+                            complete();
+                            return;
+                        }
+                    }
+
+                    currentTime = getPhaseDuration();
+                }
+
+                updateDisplay();
+            }, 1000);
+        }
+
+        function pause() {
+            if (!isRunning) return;
+
+            clearInterval(interval);
+            isPaused = true;
+            
+            document.getElementById('startBtn').style.display = 'inline-block';
+            document.getElementById('startBtn').textContent = 'Reprendre';
+            document.getElementById('pauseBtn').style.display = 'none';
+        }
+
+        function reset() {
+            clearInterval(interval);
+            isRunning = false;
+            isPaused = false;
+            currentTime = 0;
+            currentCycle = 0;
+            currentPhase = 0;
+
+            document.getElementById('phase').textContent = 'Prêt à commencer';
+            document.getElementById('phase').style.color = '#667eea';
+            document.getElementById('timer').textContent = '0';
+            document.getElementById('cycleInfo').textContent = `Cycle: 0 / ${getTotalCycles()}`;
+            document.getElementById('startBtn').style.display = 'inline-block';
+            document.getElementById('startBtn').textContent = 'Démarrer';
+            document.getElementById('pauseBtn').style.display = 'none';
+            document.getElementById('phaseDuration').disabled = false;
+            document.getElementById('cycleCount').disabled = false;
+
+            const indicator = document.getElementById('indicator');
+            indicator.style.top = '90px';
+            indicator.style.left = '90px';
+        }
+
+        function complete() {
+            clearInterval(interval);
+            document.getElementById('phase').textContent = '✅ Session terminée !';
+            document.getElementById('phase').style.color = '#48bb78';
+            document.getElementById('timer').textContent = '🎉';
+            document.getElementById('pauseBtn').style.display = 'none';
+            document.getElementById('startBtn').style.display = 'inline-block';
+            document.getElementById('startBtn').textContent = 'Recommencer';
+            document.getElementById('phaseDuration').disabled = false;
+            document.getElementById('cycleCount').disabled = false;
+            isRunning = false;
+        }
+    </script>
+</body>
+</html>
